@@ -42,9 +42,11 @@ const ProductSpotlight = () => {
                         </div>
                     </div>
                     <div className="mt-10">
-                        <button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded border-2 border-[#C61F25] bg-transparent px-6 text-base font-bold text-[#C61F25] transition-all hover:bg-[#C61F25] hover:text-white">
-                            <span className="truncate">View Technical Data Sheet</span>
-                        </button>
+                        <a href="/products/aviation/ac-x500">
+                            <button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded border-2 border-[#C61F25] bg-transparent px-6 text-base font-bold text-[#C61F25] transition-all hover:bg-[#C61F25] hover:text-white">
+                                <span className="truncate">View Technical Data Sheet</span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

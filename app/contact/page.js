@@ -25,16 +25,17 @@ export default function ContactPage() {
         <div className={`relative w-full min-h-screen text-[#222222] ${inter.className} bg-[#F9FAFB] overflow-x-hidden`}>
 
             {/* 3D Background (Light/Subtle) */}
+            {/* 3D Background (Light/Subtle) */}
             <ContactScene />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 min-h-screen flex items-center justify-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 pb-24 min-h-screen flex items-center justify-center">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 w-full bg-white/95 p-8 md:p-12 rounded-2xl border border-gray-100 shadow-2xl">
 
                     {/* LEFT COL: Contact Info */}
                     <div className="flex flex-col justify-center space-y-10 fade-in-up">
 
                         <div>
-                            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4">
+                            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0F0F10] mb-4">
                                 Get in Touch
                             </h1>
                             <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">

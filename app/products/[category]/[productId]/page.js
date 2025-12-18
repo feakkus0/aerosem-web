@@ -65,11 +65,11 @@ const getProduct = (category, productId) => {
 const themeConfig = {
     aviation: {
         bgGradient: "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-200 via-slate-100 to-slate-50",
-        accent: "text-blue-900",
-        bgAccent: "bg-blue-900",
-        borderAccent: "border-blue-900",
-        button: "bg-blue-900 hover:bg-blue-800",
-        progress: "bg-blue-900"
+        accent: "text-[#C61F25]",
+        bgAccent: "bg-[#C61F25]",
+        borderAccent: "border-[#C61F25]",
+        button: "bg-[#C61F25] hover:bg-[#0F0F10]",
+        progress: "bg-[#C61F25]"
     },
     general: {
         bgGradient: "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-50 via-white to-white",
@@ -109,7 +109,7 @@ export default function ProductDetailPage() {
                     <div className="w-full h-full relative flex items-center justify-center p-12">
                         <div className="relative w-full h-full drop-shadow-2xl">
                             <Image
-                                src={isAviation ? "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=2069&auto=format&fit=crop" : "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2064&auto=format&fit=crop"}
+                                src={isAviation ? "/aviationbarrel.png" : "/genchembarrel.png"}
                                 alt={product.name}
                                 fill
                                 className="object-contain"
@@ -124,7 +124,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Right Side - Scrollable Content */}
-            <div className="w-full md:w-1/2 min-h-screen bg-white p-8 md:p-20 flex flex-col justify-center">
+            <div className="w-full md:w-1/2 min-h-screen bg-white px-8 pb-8 pt-44 md:px-20 md:pb-20 md:pt-44 flex flex-col">
                 <Reveal width="100%">
                     <span className={`text-sm font-bold tracking-[0.2em] uppercase ${theme.accent} mb-4 block`}>
                         {product.code}
@@ -132,7 +132,7 @@ export default function ProductDetailPage() {
                 </Reveal>
 
                 <Reveal width="100%" delay={0.1}>
-                    <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 leading-tight">
+                    <h1 className="text-5xl md:text-7xl font-black text-[#0F0F10] mb-8 leading-tight">
                         {product.name}
                     </h1>
                 </Reveal>
@@ -146,7 +146,7 @@ export default function ProductDetailPage() {
                 {/* Tech Specs */}
                 <div className="mb-12 space-y-6 max-w-xl">
                     <Reveal width="100%" delay={0.3}>
-                        <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-6">Technical Specifications</h3>
+                        <h3 className="text-sm font-bold text-[#0F0F10] uppercase tracking-wider mb-6">Technical Specifications</h3>
                     </Reveal>
 
                     {product.specs.map((spec, index) => (
@@ -154,7 +154,7 @@ export default function ProductDetailPage() {
                             <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 transition-all hover:bg-white hover:shadow-md">
                                 <div className="flex justify-between items-end mb-2">
                                     <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{spec.label}</span>
-                                    <span className="text-lg font-bold text-gray-900">{spec.value}</span>
+                                    <span className="text-lg font-bold text-[#0F0F10]">{spec.value}</span>
                                 </div>
                                 <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
                                     <motion.div

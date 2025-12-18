@@ -60,9 +60,9 @@ const productsData = {
 const themeConfig = {
     aviation: {
         bg: "bg-slate-50",
-        accent: "text-blue-900",
-        borderHover: "hover:border-blue-900",
-        heroImage: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Silver Wing
+        accent: "text-[#C61F25]",
+        borderHover: "hover:border-[#C61F25]",
+        heroImage: "/aviationhero2.png", // Silver Wing
         title: "AVIATION SOLUTIONS",
         subtitle: "Advanced chemical solutions for the aerospace industry."
     },
@@ -70,7 +70,7 @@ const themeConfig = {
         bg: "bg-white",
         accent: "text-[#C61F25]",
         borderHover: "hover:border-[#C61F25]",
-        heroImage: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2070&auto=format&fit=crop", // Red Liquid/Lab
+        heroImage: "/genchemhero1.png", // Red Liquid/Lab
         title: "GENERAL CHEMISTRY",
         subtitle: "High-quality chemical products for industrial applications."
     }
@@ -103,11 +103,11 @@ export default function CategoryPage() {
                         className="object-cover"
                         priority
                     />
-                    <div className={`absolute inset-0 ${isAviation ? 'bg-blue-900/30' : 'bg-red-900/30'} mix-blend-multiply`}></div>
+                    <div className={`absolute inset-0 ${isAviation ? 'bg-[#0F0F10]/30' : 'bg-red-900/30'} mix-blend-multiply`}></div>
                     <div className="absolute inset-0 bg-black/40"></div>
                 </div>
 
-                <div className="relative z-10 text-center px-4">
+                <div className="relative z-10 text-center px-4 pt-48">
                     <Reveal width="100%">
                         <h1 className="text-5xl md:text-7xl font-bold text-white tracking-wider mb-4 drop-shadow-lg">
                             {currentTheme.title}
@@ -128,16 +128,16 @@ export default function CategoryPage() {
                     {currentProducts.map((product, index) => (
                         <Reveal key={product.id} width="100%" delay={index * 0.1}>
                             <Link href={`/products/${category}/${product.id}`} className="block h-full cursor-pointer">
-                                <div className={`group relative bg-white rounded-lg overflow-hidden border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-b-4 ${isAviation ? 'hover:border-b-blue-900' : 'hover:border-b-[#C61F25]'} h-full`}>
+                                <div className={`group relative bg-white rounded-lg overflow-hidden border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-b-4 hover:border-b-[#C61F25] h-full`}>
 
                                     {/* Image Area - Updated with Placeholder Image */}
                                     <div className="relative h-64 bg-gray-50 flex items-center justify-center p-8 overflow-hidden">
                                         <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
                                             <Image
-                                                src={isAviation ? "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=2069&auto=format&fit=crop" : "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2064&auto=format&fit=crop"}
+                                                src={isAviation ? "/aviationbarrel.png" : "/genchembarrel.png"}
                                                 alt={product.name}
                                                 fill
-                                                className="object-contain"
+                                                className="object-contain" // Keep object-contain to show full product image
                                             />
                                         </div>
                                     </div>
@@ -148,7 +148,7 @@ export default function CategoryPage() {
                                             <span className={`text-sm font-bold tracking-wider ${currentTheme.accent}`}>
                                                 {product.code}
                                             </span>
-                                            <h3 className="text-xl font-bold text-gray-900 mt-1">
+                                            <h3 className="text-xl font-bold text-[#0F0F10] mt-1">
                                                 {product.name}
                                             </h3>
                                         </div>

@@ -26,7 +26,7 @@ export default function NotFound() {
             <div className="relative z-10 text-center px-4">
                 {/* 404 with Benzene Ring */}
                 <motion.div
-                    className="flex items-center justify-center text-[8rem] md:text-[15rem] leading-none font-black text-slate-900 tracking-tighter"
+                    className="flex items-center justify-center text-[8rem] md:text-[15rem] leading-none font-black text-[#0F0F10] tracking-tighter"
                     animate={{ y: [0, -20, 0] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 >

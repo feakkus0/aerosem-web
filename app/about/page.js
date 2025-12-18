@@ -50,10 +50,10 @@ export default function AboutPage() {
     const [activeYear, setActiveYear] = useState(timelineData[0].year);
 
     return (
-        <div className="min-h-screen bg-white font-display text-black selection:bg-red-600 selection:text-white">
+        <div className="min-h-screen bg-white font-display text-[#0F0F10] selection:bg-red-600 selection:text-white">
 
             {/* SECTION 1: THE MANIFESTO (Hero) */}
-            <section className="min-h-screen flex items-center justify-center px-4 py-20">
+            <section className="min-h-screen flex items-center justify-center px-4 pt-40 pb-20">
                 <div className="max-w-7xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 md:gap-x-8">
                         {"We do not just mix chemicals. We engineer safety for the skies.".split(" ").map((word, i) => (
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 <div className="flex flex-col md:flex-row">
 
                     {/* Left Side (Sticky Year) */}
-                    <div className="hidden md:flex w-1/2 h-screen sticky top-0 items-center justify-center bg-black text-white">
+                    <div className="hidden md:flex w-1/2 h-screen sticky top-0 items-center justify-center bg-[#0F0F10] text-white">
                         <motion.span
                             key={activeYear}
                             initial={{ opacity: 0, y: 50 }}

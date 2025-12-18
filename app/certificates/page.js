@@ -25,14 +25,13 @@ export default function CertificatesPage() {
             <div className="flex flex-col lg:flex-row min-h-screen">
 
                 {/* LEFT COLUMN: Scrollable List */}
-                <div className="w-full lg:w-1/2 p-6 md:p-12 lg:p-24 flex flex-col justify-center min-h-[50vh] lg:min-h-screen z-10 bg-white">
-
+                <div className="w-full lg:w-1/2 px-6 pb-6 pt-44 md:px-12 md:pb-12 md:pt-44 lg:px-24 lg:pb-24 lg:pt-44 flex flex-col min-h-[50vh] lg:min-h-screen z-10 bg-white">
                     {/* Header */}
-                    <div className="mb-16 md:mb-24 mt-20 lg:mt-0">
+                    <div className="mb-16 md:mb-24 mt-8 lg:mt-0">
                         <span className="text-[#D32F2F] font-bold tracking-widest text-xs uppercase mb-3 block">
                             Our Standards
                         </span>
-                        <h1 className="text-4xl md:text-6xl font-light tracking-tight text-gray-900 mb-6">
+                        <h1 className="text-4xl md:text-6xl font-light tracking-tight text-[#0F0F10] mb-6">
                             Certificates &<br /> Archive.
                         </h1>
                         <p className="text-gray-500 font-light text-lg max-w-md leading-relaxed">
@@ -55,7 +54,7 @@ export default function CertificatesPage() {
                                             }`}>
                                             {cert.code}
                                         </span>
-                                        <h3 className={`text-2xl md:text-3xl font-light tracking-tight transition-colors duration-300 ${index === activeIndex ? 'text-[#D32F2F]' : 'text-gray-900'
+                                        <h3 className={`text-2xl md:text-3xl font-light tracking-tight transition-colors duration-300 ${index === activeIndex ? 'text-[#D32F2F]' : 'text-[#0F0F10]'
                                             }`}>
                                             {cert.name}
                                         </h3>
@@ -89,7 +88,7 @@ export default function CertificatesPage() {
                 </div>
 
                 {/* RIGHT COLUMN: Sticky Image Preview (Desktop Only) */}
-                <div className="hidden lg:block w-1/2 sticky top-0 h-screen bg-gray-50 border-l border-gray-100 self-start">
+                <div className="hidden lg:block w-1/2 sticky top-28 h-[calc(100vh-7rem)] bg-gray-50 border-l border-gray-100 self-start">
                     <div className="relative w-full h-full flex items-center justify-center p-20 overflow-hidden">
 
                         {/* Dynamic Background Number */}
@@ -114,7 +113,7 @@ export default function CertificatesPage() {
 
                                     {/* Overlay Details */}
                                     <div className="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-sm p-8 border-t border-gray-100">
-                                        <h4 className="text-xl font-bold text-gray-900 mb-1">{cert.name}</h4>
+                                        <h4 className="text-xl font-bold text-[#0F0F10] mb-1">{cert.name}</h4>
                                         <p className="text-sm text-gray-500 mb-4">{cert.desc}</p>
                                         <button className="w-full bg-[#D32F2F] text-white py-3 px-6 rounded-none uppercase tracking-widest text-xs font-bold hover:bg-black transition-colors duration-300 flex items-center justify-center gap-2">
                                             Download Document <FiDownload />

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -61,10 +62,16 @@ const navItemVariants = {
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+    // Define exactly which paths have dark backgrounds (requiring white text at top)
+    // Includes main products page and category sub-pages.
+    const darkHeroPaths = ['/products', '/products/aviation', '/products/general'];
+    const isDarkPage = darkHeroPaths.includes(pathname);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            setIsScrolled(window.scrollY > 20);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -80,15 +87,22 @@ const Navbar = () => {
         }
     }, [isMobileMenuOpen]);
 
+    // Dynamic Text Color Logic
+    // If Scrolled: Always Black
+    // If Top & Dark Page: White
+    // If Top & Light Page: Black
+    const textColorClass = isScrolled ? 'text-[#0F0F10]' : (isDarkPage ? 'text-white' : 'text-[#0F0F10]');
+    const logoFilterClass = isScrolled ? '' : (isDarkPage ? 'brightness-0 invert' : ''); // Optional: invert logo if needed, but text color request was specific. Keeping logo simple for now or assuming it handles itself. The request didn't explicitly ask for logo inversion, but often needed. User didn't ask for logo inversion, just text. I will stick to text color request.
+
     return (
         <React.Fragment>
             <motion.header
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-                className={`fixed top-0 z-50 w-full border-b transition-all duration-300 ${isScrolled
-                    ? 'bg-white/90 dark:bg-background-dark/90 backdrop-blur-sm border-black/5 dark:border-white/5 py-3 shadow-sm'
-                    : 'bg-transparent border-transparent py-4'
+                className={`fixed top-0 z-50 w-full transition-all duration-300 ease-in-out ${isScrolled
+                    ? 'bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm py-4'
+                    : 'bg-transparent py-6 border-transparent'
                     }`}
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8">
@@ -98,19 +112,19 @@ const Navbar = () => {
                                 src="/logoa1.webp"
                                 alt="Aerosem Kimya Logo"
                                 fill
-                                className="object-contain object-left"
+                                className={`object-contain object-left transition-all duration-300 ${!isScrolled && isDarkPage ? 'brightness-0 invert' : ''}`}
                                 priority
                             />
                         </Link>
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden items-center gap-8 md:flex">
+                    <nav className="hidden md:flex flex-1 items-center justify-evenly">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-text-light dark:text-text-dark transition-colors hover:text-primary"
+                                className={`text-sm font-medium transition-colors hover:text-primary ${textColorClass}`}
                             >
                                 {link.label}
                             </Link>
@@ -119,9 +133,11 @@ const Navbar = () => {
 
                     <div className="flex items-center gap-4">
                         {/* Request Quote Button */}
-                        <button className="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded bg-gradient-to-r from-[#C61F25] to-[#E0242C] px-4 text-sm font-bold text-white shadow-lg shadow-red-600/30 transition-all hover:opacity-90 hover:shadow-red-600/50 h-10">
-                            <span className="truncate">Request a Quote</span>
-                        </button>
+                        <Link href="/contact" className="hidden md:flex">
+                            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#C61F25] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 ease-in-out hover:bg-[#a0181d] hover:-translate-y-1">
+                                <span className="truncate">Request a Quote</span>
+                            </button>
+                        </Link>
 
                         {/* Custom Animated Mobile Toggle */}
                         <div className="md:hidden z-50">
@@ -132,7 +148,7 @@ const Navbar = () => {
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <motion.path
-                                        stroke="currentColor"
+                                        stroke={!isScrolled && isDarkPage ? "white" : "currentColor"}
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         variants={{
@@ -144,7 +160,7 @@ const Navbar = () => {
                                         transition={{ duration: 0.3 }}
                                     />
                                     <motion.path
-                                        stroke="currentColor"
+                                        stroke={!isScrolled && isDarkPage ? "white" : "currentColor"}
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         variants={{

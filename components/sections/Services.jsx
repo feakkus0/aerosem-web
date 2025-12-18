@@ -4,7 +4,7 @@ import { Plane, Shield, Droplets, FlaskConical, TestTube, ArrowRight } from 'luc
 const Services = () => {
     return (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-text-light dark:text-text-dark sm:text-4xl">Core Services</h2>
+            <h2 className="text-center text-3xl font-bold tracking-tight text-[#0F0F10] dark:text-text-dark sm:text-4xl">Core Services</h2>
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
                 {/* Service 1 */}
@@ -16,7 +16,7 @@ const Services = () => {
                         <div className="h-16 w-16 rounded-2xl bg-[#FFF5F5] border border-[#FFE5E5] flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                             <Plane className="w-8 h-8 text-[#C61F25]" />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Aircraft Cleaning Solutions</h3>
+                        <h3 className="text-xl font-bold text-[#0F0F10] dark:text-white">Aircraft Cleaning Solutions</h3>
                         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">High-performance formulas for pristine exterior and interior cleaning.</p>
                     </div>
                     <div className="relative z-10 mt-8 flex justify-end">
@@ -32,7 +32,7 @@ const Services = () => {
                         <div className="h-16 w-16 rounded-2xl bg-[#FFF5F5] border border-[#FFE5E5] flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                             <Shield className="w-8 h-8 text-[#C61F25]" />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Corrosion Inhibitors</h3>
+                        <h3 className="text-xl font-bold text-[#0F0F10] dark:text-white">Corrosion Inhibitors</h3>
                         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Advanced protection against environmental degradation.</p>
                     </div>
                     <div className="relative z-10 mt-8 flex justify-end">
@@ -48,7 +48,7 @@ const Services = () => {
                         <div className="h-16 w-16 rounded-2xl bg-[#FFF5F5] border border-[#FFE5E5] flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                             <Droplets className="w-8 h-8 text-[#C61F25]" />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Specialized Coatings</h3>
+                        <h3 className="text-xl font-bold text-[#0F0F10] dark:text-white">Specialized Coatings</h3>
                         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Durable, high-tech coatings for optimal performance.</p>
                     </div>
                     <div className="relative z-10 mt-8 flex justify-end">
@@ -64,7 +64,7 @@ const Services = () => {
                         <div className="h-16 w-16 rounded-2xl bg-[#FFF5F5] border border-[#FFE5E5] flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                             <FlaskConical className="w-8 h-8 text-[#C61F25]" />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Industrial Degreasers</h3>
+                        <h3 className="text-xl font-bold text-[#0F0F10] dark:text-white">Industrial Degreasers</h3>
                         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Powerful solutions for heavy-duty industrial applications.</p>
                     </div>
                     <div className="relative z-10 mt-8 flex justify-end">
@@ -80,7 +80,7 @@ const Services = () => {
                         <div className="h-16 w-16 rounded-2xl bg-[#FFF5F5] border border-[#FFE5E5] flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105">
                             <TestTube className="w-8 h-8 text-[#C61F25]" />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Custom Formulations</h3>
+                        <h3 className="text-xl font-bold text-[#0F0F10] dark:text-white">Custom Formulations</h3>
                         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Tailor-made chemical solutions to meet your specific needs.</p>
                     </div>
                     <div className="relative z-10 mt-8 flex justify-end">

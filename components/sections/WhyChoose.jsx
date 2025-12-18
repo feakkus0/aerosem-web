@@ -28,9 +28,11 @@ const WhyChoose = () => {
                             </div>
                         </div>
                         <div className="mt-10">
-                            <button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded bg-gradient-to-r from-[#C61F25] to-[#E0242C] px-6 text-base font-bold text-white shadow-lg shadow-red-600/30 transition-transform hover:scale-105 hover:shadow-red-600/50">
-                                <span className="truncate">About Us</span>
-                            </button>
+                            <a href="/about">
+                                <button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded bg-gradient-to-r from-[#C61F25] to-[#E0242C] px-6 text-base font-bold text-white shadow-lg shadow-red-600/30 transition-transform hover:scale-105 hover:shadow-red-600/50">
+                                    <span className="truncate">About Us</span>
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div className="flex items-center justify-center">

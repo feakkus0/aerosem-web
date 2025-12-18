@@ -33,6 +33,13 @@ module.exports = {
                 'embroidery-spin': 'spin 10s linear infinite',
                 'marquee-logos': 'marquee-logos 60s linear infinite',
                 'highlight-line-pulse': 'highlight-line-pulse 4s ease-in-out infinite',
+                'infinite-scroll': 'scroll 40s linear infinite',
+            },
+            keyframes: {
+                scroll: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-50%)' },
+                }
             }
         },
     },

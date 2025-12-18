@@ -5,10 +5,10 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export default function DocumentationPage() {
     return (
-        <div className="min-h-screen bg-white dark:bg-background-dark pt-20">
+        <div className="min-h-screen bg-white dark:bg-background-dark pt-32">
             <section className="px-4 py-24 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <Reveal>
-                    <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white tracking-tight mb-6">
+                    <h1 className="text-5xl md:text-7xl font-bold text-[#0F0F10] dark:text-white tracking-tight mb-6">
                         Documentation
                     </h1>
                 </Reveal>

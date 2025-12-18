@@ -70,14 +70,14 @@ const Hero = () => {
             <div ref={visualRef} className="absolute inset-0 z-0 h-full w-full opacity-0">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/herov4.jpg')" }}
+                    style={{ backgroundImage: "url('/herov6.png')" }}
                 ></div>
                 <div className="absolute inset-0 bg-white/30"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
             </div>
 
             <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center text-center">
-                <h1 ref={titleRef} className="text-5xl md:text-9xl font-black tracking-tighter text-slate-900 uppercase leading-[0.9] overflow-hidden">
+                <h1 ref={titleRef} className="text-5xl md:text-9xl font-black tracking-tighter text-[#0F0F10] uppercase leading-[0.9] overflow-hidden">
                     {/* Manual Split for animation targets */}
                     <div className="overflow-hidden inline-block"><span className="word-span block translate-y-full opacity-0">BEYOND</span></div>
                     <br />
@@ -85,14 +85,16 @@ const Hero = () => {
                 </h1>
 
                 <div ref={contentRef} className="opacity-0 translate-y-4">
-                    <p className="mt-8 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+                    <p className="mt-8 text-lg md:text-xl text-[#0F0F10] max-w-2xl mx-auto font-medium leading-relaxed">
                         Advanced aerospace solutions engineered for tomorrow’s skies.
                     </p>
 
                     <div className="mt-10">
-                        <button className="bg-[#C61F25] text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-[#a0181d] transition-all hover:scale-105 hover:shadow-2xl">
-                            Explore Our Solutions
-                        </button>
+                        <a href="/products">
+                            <button className="bg-[#C61F25] text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-[#a0181d] transition-all hover:scale-105 hover:shadow-2xl">
+                                Explore Our Solutions
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
