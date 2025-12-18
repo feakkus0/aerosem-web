@@ -143,7 +143,7 @@ const Navbar = () => {
                         <div className="md:hidden z-50">
                             <button
                                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                                className="relative w-12 h-12 flex items-center justify-center focus:outline-none"
+                                className="relative w-12 h-12 flex items-center justify-center focus:outline-none text-[#0F0F10]"
                                 aria-label="Toggle Menu"
                             >
                                 <svg width="24" height="24" viewBox="0 0 24 24">
