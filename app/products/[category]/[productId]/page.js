@@ -1,66 +1,16 @@
 "use client";
 
 import React from "react";
-import { useParams } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
-import { FileText, ArrowRight, Box } from "lucide-react";
+import { FileText, ArrowRight, Shield, Zap, Package, ArrowLeft } from "lucide-react";
 
-// Mock Data Lookup
-const getProduct = (category, productId) => {
-    const products = {
-        aviation: {
-            "ac-x500": {
-                code: "AERO-X500",
-                name: "AeroCleanse X-500",
-                description: "A high-performance, biodegradable exterior cleaner specifically formulated for aerospace applications. It effectively removes carbon exhaust, grease, and hydraulic fluid residues without damaging paint or composite materials.",
-                specs: [
-                    { label: "pH Level", value: "7.5", percent: 75 },
-                    { label: "Biodegradability", value: "98%", percent: 98 },
-                    { label: "Concentration", value: "High", percent: 90 },
-                    { label: "Efficiency", value: "Excellent", percent: 95 }
-                ]
-            },
-            "tk-g2": {
-                code: "TURB-G2",
-                name: "TurbineKleen G2",
-                description: "Advanced gas path cleaner designed to restore engine performance and fuel efficiency. Removes fouling deposits from compressor blades and stators.",
-                specs: [
-                    { label: "pH Level", value: "8.0", percent: 80 },
-                    { label: "Solubility", value: "100%", percent: 100 },
-                    { label: "Flash Point", value: ">100°C", percent: 85 },
-                    { label: "Efficiency", value: "High", percent: 92 }
-                ]
-            }
-        },
-        general: {
-            "is-90": {
-                code: "INDUS-90",
-                name: "IndusSolv 90",
-                description: "Heavy-duty industrial degreaser capable of cutting through the toughest sludge, oil, and grime. Ideal for machinery, floors, and parts cleaning.",
-                specs: [
-                    { label: "pH Level", value: "12.0", percent: 95 },
-                    { label: "Solvency Power", value: "Extreme", percent: 98 },
-                    { label: "Rinsability", value: "Good", percent: 80 },
-                    { label: "Efficiency", value: "High", percent: 90 }
-                ]
-            },
-            "cs-pro": {
-                code: "CHEM-PRO",
-                name: "ChemShield Pro",
-                description: "A durable surface protectant that forms a barrier against corrosion, moisture, and chemical attack. Extends the lifespan of treated equipment.",
-                specs: [
-                    { label: "Durability", value: "Long-term", percent: 90 },
-                    { label: "Adhesion", value: "Strong", percent: 95 },
-                    { label: "Cure Time", value: "24h", percent: 60 },
-                    { label: "Protection", value: "Max", percent: 98 }
-                ]
-            }
-        }
-    };
-    return products[category]?.[productId] || null;
-};
+// --- GERÇEK VERİYİ ÇEKİYORUZ ---
+// Scraper'ın oluşturduğu dosyayı okuyoruz.
+import productsJson from "../../../../data/products.json";
 
 const themeConfig = {
     aviation: {
@@ -69,7 +19,7 @@ const themeConfig = {
         bgAccent: "bg-[#C61F25]",
         borderAccent: "border-[#C61F25]",
         button: "bg-[#C61F25] hover:bg-[#0F0F10]",
-        progress: "bg-[#C61F25]"
+        iconColor: "text-[#C61F25]"
     },
     general: {
         bgGradient: "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-50 via-white to-white",
@@ -77,39 +27,53 @@ const themeConfig = {
         bgAccent: "bg-[#C61F25]",
         borderAccent: "border-[#C61F25]",
         button: "bg-[#C61F25] hover:bg-[#b01b20]",
-        progress: "bg-[#C61F25]"
+        iconColor: "text-[#C61F25]"
     }
 };
 
 export default function ProductDetailPage() {
     const params = useParams();
+
+    // --- 1. YÜKLENME KONTROLÜ (404 HATASINI ÇÖZEN KISIM) ---
+    // Parametreler tam olarak gelmeden işlem yapma.
+    if (!params || !params.productId || !params.category) {
+        return <div className="min-h-screen bg-white" />;
+    }
+
     const { category, productId } = params;
 
-    const product = getProduct(category, productId);
-    const theme = themeConfig[category] || themeConfig.general;
-    const isAviation = category === 'aviation';
+    // --- 2. ÜRÜNÜ BUL ---
+    const product = productsJson.find((p) => p.id === productId);
 
+    // Tema Ayarı
+    const theme = themeConfig[category] || themeConfig.general;
+
+    // --- 3. ÜRÜN GERÇEKTEN YOKSA 404 VER ---
     if (!product) {
-        return <div className="min-h-screen flex items-center justify-center">Product not found</div>;
+        return notFound();
     }
 
     return (
         <div className="min-h-screen bg-white font-display flex flex-col md:flex-row">
 
-            {/* Left Side - Sticky Visual */}
-            <div className={`relative w-full h-64 md:w-1/2 md:h-screen md:sticky md:top-0 flex items-center justify-center overflow-hidden ${theme.bgGradient}`}>
+            {/* --- SOL TARAF (GÖRSEL ALANI) --- */}
+            <div className={`relative w-full h-[50vh] md:w-1/2 md:h-screen md:sticky md:top-0 flex items-center justify-center overflow-hidden ${theme.bgGradient}`}>
+
+                {/* Mobil Geri Butonu */}
+                <Link href={`/products/${category}`} className="absolute top-24 left-6 z-20 md:hidden bg-white/80 p-2 rounded-full backdrop-blur-sm">
+                    <ArrowLeft className="w-6 h-6 text-gray-700" />
+                </Link>
+
                 <motion.div
                     animate={{ y: [0, -20, 0] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                     className="relative w-64 h-64 md:w-96 md:h-96"
                 >
-                    {/* Placeholder for Product Container (Drum/Jerrycan) */}
-                    {/* Using a Box icon as placeholder, but styled to look like a floating object */}
-                    {/* Product Image */}
-                    <div className="w-full h-full relative flex items-center justify-center p-12">
+                    {/* Ürün Görseli */}
+                    <div className="w-full h-full relative flex items-center justify-center p-8 md:p-12">
                         <div className="relative w-full h-full drop-shadow-2xl">
                             <Image
-                                src={isAviation ? "/aviationbarrel.png" : "/genchembarrel.png"}
+                                src={product.image}
                                 alt={product.name}
                                 fill
                                 className="object-contain"
@@ -119,67 +83,107 @@ export default function ProductDetailPage() {
                     </div>
                 </motion.div>
 
-                {/* Background Decor */}
+                {/* Arka Plan Deseni */}
                 <div className="absolute inset-0 bg-grid-black/[0.02] -z-10"></div>
             </div>
 
-            {/* Right Side - Scrollable Content */}
-            <div className="w-full md:w-1/2 min-h-screen bg-white px-8 pb-8 pt-44 md:px-20 md:pb-20 md:pt-44 flex flex-col">
+            {/* --- SAĞ TARAF (İÇERİK ALANI) --- */}
+            <div className="w-full md:w-1/2 min-h-screen bg-white px-6 pb-12 pt-12 md:px-20 md:pb-20 md:pt-32 flex flex-col">
+
+                {/* Masaüstü Geri Butonu */}
+                <div className="hidden md:block mb-8">
+                    <Reveal>
+                        <Link
+                            href={`/products/${category}`}
+                            className="inline-flex items-center text-gray-400 hover:text-[#C61F25] transition-colors text-sm font-bold tracking-wide uppercase"
+                        >
+                            <ArrowLeft className="w-4 h-4 mr-2" />
+                            Back to {category}
+                        </Link>
+                    </Reveal>
+                </div>
+
+                {/* Alt Kategori Etiketi */}
                 <Reveal width="100%">
-                    <span className={`text-sm font-bold tracking-[0.2em] uppercase ${theme.accent} mb-4 block`}>
-                        {product.code}
+                    <span className={`inline-block px-3 py-1 rounded bg-gray-100 text-xs font-bold tracking-[0.15em] uppercase text-gray-600 mb-6`}>
+                        {product.subcategory}
                     </span>
                 </Reveal>
 
+                {/* Başlık */}
                 <Reveal width="100%" delay={0.1}>
-                    <h1 className="text-5xl md:text-7xl font-black text-[#0F0F10] mb-8 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-black text-[#0F0F10] mb-8 leading-tight">
                         {product.name}
                     </h1>
                 </Reveal>
 
+                {/* Açıklama */}
                 <Reveal width="100%" delay={0.2}>
-                    <p className="text-lg text-gray-600 leading-relaxed mb-12 max-w-xl">
-                        {product.description}
-                    </p>
+                    <div className="prose prose-lg text-gray-600 leading-relaxed mb-12 max-w-xl">
+                        <p>
+                            {/* Scraper'dan gelen uzun açıklama burada görünecek */}
+                            {product.description || `High-performance ${product.name} designed for professional industrial applications.`}
+                        </p>
+                    </div>
                 </Reveal>
 
-                {/* Tech Specs */}
-                <div className="mb-12 space-y-6 max-w-xl">
+                {/* Özellik Kutucukları */}
+                <div className="mb-12 grid grid-cols-2 gap-4 max-w-xl">
                     <Reveal width="100%" delay={0.3}>
-                        <h3 className="text-sm font-bold text-[#0F0F10] uppercase tracking-wider mb-6">Technical Specifications</h3>
+                        <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
+                            <Shield className={`w-6 h-6 ${theme.iconColor}`} />
+                            <div>
+                                <h4 className="font-bold text-[#0F0F10] text-sm">Industrial Grade</h4>
+                                <p className="text-xs text-gray-500">Maximum durability</p>
+                            </div>
+                        </div>
                     </Reveal>
 
-                    {product.specs.map((spec, index) => (
-                        <Reveal key={spec.label} width="100%" delay={0.3 + (index * 0.1)}>
-                            <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 transition-all hover:bg-white hover:shadow-md">
-                                <div className="flex justify-between items-end mb-2">
-                                    <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">{spec.label}</span>
-                                    <span className="text-lg font-bold text-[#0F0F10]">{spec.value}</span>
-                                </div>
-                                <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: `${spec.percent}%` }}
-                                        transition={{ duration: 1, delay: 0.5 + (index * 0.1), ease: "easeOut" }}
-                                        className={`h-full rounded-full ${theme.progress}`}
-                                    ></motion.div>
-                                </div>
+                    <Reveal width="100%" delay={0.35}>
+                        <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
+                            <Zap className={`w-6 h-6 ${theme.iconColor}`} />
+                            <div>
+                                <h4 className="font-bold text-[#0F0F10] text-sm">High Efficiency</h4>
+                                <p className="text-xs text-gray-500">Fast acting formula</p>
                             </div>
-                        </Reveal>
-                    ))}
+                        </div>
+                    </Reveal>
+
+                    <Reveal width="100%" delay={0.4}>
+                        <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
+                            <Package className={`w-6 h-6 ${theme.iconColor}`} />
+                            <div>
+                                <h4 className="font-bold text-[#0F0F10] text-sm">Original Product</h4>
+                                <p className="text-xs text-gray-500">Aerosem guarantee</p>
+                            </div>
+                        </div>
+                    </Reveal>
+
+                    <Reveal width="100%" delay={0.45}>
+                        <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
+                            <FileText className={`w-6 h-6 ${theme.iconColor}`} />
+                            <div>
+                                <h4 className="font-bold text-[#0F0F10] text-sm">TDS Available</h4>
+                                <p className="text-xs text-gray-500">Request document</p>
+                            </div>
+                        </div>
+                    </Reveal>
                 </div>
 
-                {/* CTA */}
-                <Reveal width="100%" delay={0.6}>
-                    <button className={`w-full max-w-xl group relative overflow-hidden rounded-xl ${theme.button} text-white p-6 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1`}>
-                        <div className="relative z-10 flex items-center justify-between font-bold tracking-wider">
-                            <span className="text-lg">REQUEST DATA SHEET</span>
-                            <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                {/* Alt Butonlar */}
+                <Reveal width="100%" delay={0.5}>
+                    <div className="flex flex-col gap-4 max-w-xl">
+                        <Link href="/contact" className={`w-full group relative overflow-hidden rounded-xl ${theme.button} text-white p-5 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1`}>
+                            <div className="relative z-10 flex items-center justify-between font-bold tracking-wider">
+                                <span className="text-base">REQUEST QUOTE</span>
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                            </div>
+                        </Link>
+
+                        <div className="flex items-center justify-center gap-2 text-sm text-gray-400 mt-2">
+                            <FileText className="w-4 h-4" />
+                            <span>Technical Data Sheet (TDS) available upon request.</span>
                         </div>
-                    </button>
-                    <div className="mt-4 flex items-center gap-2 text-sm text-gray-400">
-                        <FileText className="w-4 h-4" />
-                        <span>PDF Format • 2.4 MB</span>
                     </div>
                 </Reveal>
 

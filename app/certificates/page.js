@@ -8,12 +8,9 @@ import { FiArrowRight, FiDownload } from 'react-icons/fi';
 const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600'] });
 
 const CERTIFICATES_DATA = [
-    { id: 1, code: "01", name: "ISO 9001:2015", desc: "Quality Management System", img: "/certs/iso9001.jpg" },
-    { id: 2, code: "02", name: "ISO 14001:2015", desc: "Environmental Management", img: "/certs/iso14001.jpg" },
-    { id: 3, code: "03", name: "OHSAS 18001", desc: "Occupational Health & Safety", img: "/certs/ohsas18001.jpg" },
-    { id: 4, code: "04", name: "HELAL BELGESİ", desc: "Halal Certification Standard", img: "/certs/halal.jpg" },
-    { id: 5, code: "05", name: "TSE / HYB", desc: "Service Adequacy Certificate", img: "/certs/tse.jpg" },
-    { id: 6, code: "06", name: "YERLİ MALI", desc: "Domestic Goods Certificate", img: "/certs/yerli.jpg" },
+    { id: 1, code: "01", name: "ISO 9001:2015", desc: "Quality Management System", img: "/iso9001.jpg" },
+    { id: 2, code: "02", name: "EN 9120:2018 AND ISO 9001:2015", desc: "Aviation Supplier Evaluation", img: "/en9120_iso9001.png" },
+
 ];
 
 export default function CertificatesPage() {
@@ -104,12 +101,7 @@ export default function CertificatesPage() {
                                     className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out bg-gray-200 ${index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                                         }`}
                                 >
-                                    {/* Placeholder logic for demo */}
-                                    {/* <Image src={cert.img} alt={cert.name} fill className="object-cover" /> */}
-                                    <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-300">
-                                        <span className="text-6xl mb-4">📄</span>
-                                        <p className="uppercase tracking-widest text-sm font-semibold text-gray-400">Preview</p>
-                                    </div>
+                                    <Image src={cert.img} alt={cert.name} fill className="object-cover" />
 
                                     {/* Overlay Details */}
                                     <div className="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-sm p-8 border-t border-gray-100">

@@ -32,9 +32,10 @@ const Footer = () => {
                         <div>
                             <h3 className="text-sm font-semibold uppercase tracking-wider">Contact</h3>
                             <ul className="mt-4 space-y-2 text-sm">
-                                <li><Link className="text-white/70 hover:text-primary" href="#">info@aerosem.com</Link></li>
-                                <li><Link className="text-white/70 hover:text-primary" href="#">+1 (123) 456-7890</Link></li>
-                                <li><p className="text-white/70">123 Aviation Ave, Istanbul, Turkey</p></li>
+                                <li><Link className="text-white/70 hover:text-primary" href="mailto:info@aerosem.com.tr">info@aerosem.com.tr</Link></li>
+                                <li><Link className="text-white/70 hover:text-primary" href="tel:02222362793">0222 - 236 27 93</Link></li>
+                                <li><Link className="text-white/70 hover:text-primary" href="tel:02222280353">0222 - 228 03 53</Link></li>
+                                <li><p className="text-white/70">75. YIL MAH. EOSB 5.CAD. NO:8 ODUNPAZARI / ESKİŞEHİR</p></li>
                             </ul>
                         </div>
                         <div>

@@ -18,7 +18,7 @@ export default function ContactPage() {
     }, []);
 
     // Aerosem HQ Coordinates roughly
-    const mapQuery = "Eskişehir Organize Sanayi Bölgesi, Havacılık Blv. No:123";
+    const mapQuery = "75. YIL MAH. EOSB 5.CAD. NO:8 ODUNPAZARI / ESKİŞEHİR";
     const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
 
     return (
@@ -61,13 +61,21 @@ export default function ContactPage() {
                             {/* Phone */}
                             <div className="group">
                                 <span className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1 block">Phone</span>
-                                <a
-                                    href="tel:+902222361555"
-                                    className="flex items-center gap-3 text-xl md:text-2xl font-medium text-gray-800 hover:text-[#CC0000] transition-colors duration-300"
-                                >
-                                    <FiPhone className="text-[#CC0000]" />
-                                    +90 222 236 15 55
-                                </a>
+                                <div className="flex flex-col gap-1 text-xl md:text-2xl font-medium text-gray-800">
+                                    <a
+                                        href="tel:+902222362793"
+                                        className="flex items-center gap-3 hover:text-[#CC0000] transition-colors duration-300"
+                                    >
+                                        <FiPhone className="text-[#CC0000]" />
+                                        0222 - 236 27 93
+                                    </a>
+                                    <a
+                                        href="tel:+902222280353"
+                                        className="flex items-center gap-3 pl-9 hover:text-[#CC0000] transition-colors duration-300"
+                                    >
+                                        0222 - 228 03 53
+                                    </a>
+                                </div>
                             </div>
 
                             {/* Address */}
@@ -81,9 +89,9 @@ export default function ContactPage() {
                                 >
                                     <FiMapPin className="text-[#CC0000] mt-1 shrink-0" />
                                     <div className="text-lg text-gray-600 leading-relaxed font-light">
-                                        Eskişehir Organize Sanayi Bölgesi<br />
-                                        Havacılık Blv. No:123<br />
-                                        26110 Eskişehir, Turkey
+                                        75. YIL MAH. EOSB 5.CAD. NO:8<br />
+                                        ODUNPAZARI / ESKİŞEHİR<br />
+                                        Turkey
                                     </div>
                                 </a>
                             </div>
@@ -95,7 +103,7 @@ export default function ContactPage() {
                     <div className="fade-in-up w-full h-[400px] md:h-[500px] relative">
                         <div className="w-full h-full rounded-xl overflow-hidden border border-gray-200 shadow-lg bg-white relative group">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3066.456632439876!2d30.51841131536648!3d39.77670097944485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cc160000000001%3A0x1234567890abcdef!2sEski%C5%9Fehir%20Organize%20Sanayi%20B%C3%B6lgesi!5e0!3m2!1sen!2str!4v1625000000000!5m2!1sen!2str"
+                                src={`https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${encodeURIComponent(mapQuery)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`}
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}

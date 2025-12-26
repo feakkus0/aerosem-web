@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FileText } from 'lucide-react';
+import CorporateButton from '@/components/ui/CorporateButton';
 
 const navLinks = [
     { href: "/products", label: "Products" },
@@ -134,9 +136,9 @@ const Navbar = () => {
                     <div className="flex items-center gap-4">
                         {/* Request Quote Button */}
                         <Link href="/contact" className="hidden md:flex">
-                            <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#C61F25] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 ease-in-out hover:bg-[#a0181d] hover:-translate-y-1">
-                                <span className="truncate">Request a Quote</span>
-                            </button>
+                            <CorporateButton icon={<FileText size={14} />} className="px-6 py-3 text-[10px]">
+                                Request a Quote
+                            </CorporateButton>
                         </Link>
 
                         {/* Custom Animated Mobile Toggle */}

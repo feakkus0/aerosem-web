@@ -1,12 +1,13 @@
 import React from 'react';
-import { FlaskConical, Plane, ShieldCheck } from 'lucide-react';
+import { FlaskConical, Plane, ShieldCheck, FileText } from 'lucide-react';
+import CorporateButton from '@/components/ui/CorporateButton';
 
 const ProductSpotlight = () => {
     return (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
             <div className="text-center">
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-text-light/60 dark:text-text-dark/60">Product Spotlight</h3>
-                <h2 className="mt-2 text-3xl font-bold tracking-tighter text-text-light dark:text-text-dark sm:text-4xl">AeroCleanse X-500</h2>
+                <h2 className="mt-2 text-3xl font-bold tracking-tighter text-text-light dark:text-text-dark sm:text-4xl">Bonderite M-CR 1200 AERO</h2>
             </div>
             <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
                 <div className="group relative flex h-full min-h-[400px] w-full items-center justify-center rounded-2xl bg-white p-8 dark:bg-card-dark ring-1 ring-black/5 dark:ring-white/10">
@@ -17,20 +18,20 @@ const ProductSpotlight = () => {
                     />
                 </div>
                 <div className="flex flex-col">
-                    <p className="text-base text-text-light/80 dark:text-text-dark/80">Our flagship exterior aircraft cleaning fluid, engineered for maximum efficiency and environmental compliance. AeroCleanse X-500 provides a superior, streak-free finish while protecting sensitive aircraft materials.</p>
+                    <p className="text-base text-text-light/80 dark:text-text-dark/80">BONDERITE M-CR 1200 AERO is a powdered chemical used to produce a protective coating on aluminum which ranges in color from light iridescent gold to tan. The process is operated at room temperature. The coating produced minimizes corrosion and provides an improved bond for paint.</p>
                     <div className="mt-8 space-y-6">
                         <div className="flex items-start">
                             <FlaskConical className="mr-4 mt-1 h-6 w-6 text-primary" />
                             <div>
                                 <h4 className="font-bold">Density</h4>
-                                <p className="text-sm text-text-light/70 dark:text-text-dark/70">1.05 g/cm³ at 20°C</p>
+                                <p className="text-sm text-text-light/70 dark:text-text-dark/70">Known as ALODINE 1200</p>
                             </div>
                         </div>
                         <div className="flex items-start">
                             <Plane className="mr-4 mt-1 h-6 w-6 text-primary" />
                             <div>
                                 <h4 className="font-bold">Primary Usage</h4>
-                                <p className="text-sm text-text-light/70 dark:text-text-dark/70">Exterior fuselage, wing, and tail cleaning</p>
+                                <p className="text-sm text-text-light/70 dark:text-text-dark/70">Superior corrosion protection for aluminum surfaces</p>
                             </div>
                         </div>
                         <div className="flex items-start">
@@ -42,10 +43,10 @@ const ProductSpotlight = () => {
                         </div>
                     </div>
                     <div className="mt-10">
-                        <a href="/products/aviation/ac-x500">
-                            <button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded border-2 border-[#C61F25] bg-transparent px-6 text-base font-bold text-[#C61F25] transition-all hover:bg-[#C61F25] hover:text-white">
-                                <span className="truncate">View Technical Data Sheet</span>
-                            </button>
+                        <a href="/products/aviation/bonderite-m-cr-1200-aero">
+                            <CorporateButton icon={<FileText size={14} />}>
+                                View Technical Data Sheet
+                            </CorporateButton>
                         </a>
                     </div>
                 </div>

@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ArrowRight, Send } from 'lucide-react';
+import CorporateButton from '@/components/ui/CorporateButton';
 
 const Hero = () => {
     const containerRef = useRef(null);
@@ -89,11 +91,11 @@ const Hero = () => {
                         Advanced aerospace solutions engineered for tomorrow’s skies.
                     </p>
 
-                    <div className="mt-10">
+                    <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
                         <a href="/products">
-                            <button className="bg-[#C61F25] text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-[#a0181d] transition-all hover:scale-105 hover:shadow-2xl">
+                            <CorporateButton icon={<ArrowRight size={14} />}>
                                 Explore Our Solutions
-                            </button>
+                            </CorporateButton>
                         </a>
                     </div>
                 </div>
