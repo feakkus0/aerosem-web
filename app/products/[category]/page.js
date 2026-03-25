@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { useParams, notFound } from "next/navigation";
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { Droplets, Activity, ArrowLeft } from "lucide-react";
@@ -73,9 +73,9 @@ export default function CategoryPage() {
             {/* Hero Section */}
             <div className="relative w-full h-[60vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <Image
+                    <NextImage
                         src={currentTheme.heroImage}
-                        alt={currentTheme.title}
+                        alt={`Aerosem Kimya - ${category} Chemistry Formulations`}
                         fill
                         className="object-cover"
                         priority
@@ -145,9 +145,9 @@ export default function CategoryPage() {
                                     {/* Image Area */}
                                     <div className="relative h-64 bg-white flex items-center justify-center p-8 overflow-hidden border-b border-gray-50">
                                         <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
-                                            <Image
+                                            <NextImage
                                                 src={product.image}
-                                                alt={product.name}
+                                                alt={`Aerosem Kimya - ${product.name}`}
                                                 fill
                                                 className="object-contain"
                                             />

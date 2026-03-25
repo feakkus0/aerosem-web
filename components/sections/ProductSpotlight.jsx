@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlaskConical, Plane, ShieldCheck, FileText } from 'lucide-react';
 import CorporateButton from '@/components/ui/CorporateButton';
+import NextImage from "next/image";
 
 const ProductSpotlight = () => {
     return (
@@ -11,10 +12,12 @@ const ProductSpotlight = () => {
             </div>
             <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
                 <div className="group relative flex h-full min-h-[400px] w-full items-center justify-center rounded-2xl bg-white p-8 dark:bg-card-dark ring-1 ring-black/5 dark:ring-white/10">
-                    <img
-                        alt="A sleek, matte-silver industrial chemical drum/barrel with the Aerosem logo, floating in a clean white space."
+                    <NextImage
+                        alt="Aerosem Kimya - Bonderite M-CR 1200 AERO Technical Drum"
                         className="w-full max-w-md object-contain transition-transform duration-500 ease-in-out group-hover:scale-105"
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMlzF7Pnti9L-p2uNL4oJvNFpkrPjzfJ2HcFwV5S4J-86-ReLK0WqYf4HllcPe269rLWRVv8S_jdP0X-X6VV0Zv0xwOZZfJgRbGIcr_3vd3TDnhO6coy-q0N7g1Nb80RPDGC5kHMP0Tj8Z2WtX5mx4RDwULWbvpm_qPQ923e4gnLcJo3ugWIpKeytcnLkPXAvsam3mDw31JHpztMs9VH3-TJVgaXB1E72v56uzj8l_P0s8wCeaFv9KqWvRnmWGQ09H1UwvCVO-o9tg"
+                        width={400}
+                        height={400}
                     />
                 </div>
                 <div className="flex flex-col">

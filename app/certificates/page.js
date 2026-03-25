@@ -2,124 +2,148 @@
 
 import React, { useState } from 'react';
 import { Inter } from 'next/font/google';
-import Image from 'next/image';
-import { FiArrowRight, FiDownload } from 'react-icons/fi';
+import NextImage from "next/image";
+import { motion } from 'framer-motion';
 
-const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '600'] });
+const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500', '700', '900'] });
 
-const CERTIFICATES_DATA = [
-    { id: 1, code: "01", name: "ISO 9001:2015", desc: "Quality Management System", img: "/iso9001.jpg" },
-    { id: 2, code: "02", name: "EN 9120:2018 AND ISO 9001:2015", desc: "Aviation Supplier Evaluation", img: "/en9120_iso9001.png" },
-
+const CERTIFICATES = [
+  { id: 1, code: "01", name: "ISO 9001:2015", desc: "Quality Management System", img: "/iso9001.jpg" },
+  { id: 2, code: "02", name: "EN 9120:2018", desc: "Aviation Supplier Evaluation", img: "/en9120_iso9001.png" },
 ];
 
-export default function CertificatesPage() {
-    const [activeIndex, setActiveIndex] = useState(0);
+export default function CertificatesGridPage() {
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-    return (
-        <div className={`min-h-screen bg-white text-[#111] ${inter.className}`}>
+  return (
+    <main className={`min-h-screen bg-[#0F0F10] text-[#FFFFFF] ${inter.className} flex lg:items-center justify-center overflow-hidden relative pt-32 pb-24 lg:py-24`}>
+      
+      {/* Background QUALITY text that shifts slightly on hover */}
+      <motion.div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18vw] font-[900] text-transparent tracking-tighter pointer-events-none select-none z-0 mt-10 lg:mt-0"
+        style={{ WebkitTextStroke: '2px rgba(255,255,255,0.04)' }}
+        animate={{
+            x: hoveredCard === 1 ? "calc(-50% - 2%)" : hoveredCard === 2 ? "calc(-50% + 2%)" : "-50%",
+            y: "-50%",
+            scale: hoveredCard !== null ? 1.02 : 1
+        }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        QUALITY
+      </motion.div>
 
-            <div className="flex flex-col lg:flex-row min-h-screen">
+      <motion.div 
+        className="w-full max-w-7xl mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-20 relative z-10"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {/* Left Header Section - 30% */}
+        <section className="w-full lg:w-[30%] flex flex-col justify-center">
+          <motion.header
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="max-w-md"
+          >
+            <h2 className="text-[#C32127] font-black tracking-[0.25em] text-xs uppercase mb-6 block">
+              Our Standards
+            </h2>
+            <h1 className="text-5xl lg:text-5xl xl:text-6xl font-light tracking-tight text-white mb-6 leading-[1.05]">
+              Certificates<br />& Archive.
+            </h1>
+            <p className="text-[#A0A0A0] font-light text-base leading-relaxed">
+              A curated selection of our global compliances, ensuring quality at every step of the chemical process.
+            </p>
+          </motion.header>
+        </section>
 
-                {/* LEFT COLUMN: Scrollable List */}
-                <div className="w-full lg:w-1/2 px-6 pb-6 pt-44 md:px-12 md:pb-12 md:pt-44 lg:px-24 lg:pb-24 lg:pt-44 flex flex-col min-h-[50vh] lg:min-h-screen z-10 bg-white">
-                    {/* Header */}
-                    <div className="mb-16 md:mb-24 mt-8 lg:mt-0">
-                        <span className="text-[#D32F2F] font-bold tracking-widest text-xs uppercase mb-3 block">
-                            Our Standards
-                        </span>
-                        <h1 className="text-4xl md:text-6xl font-light tracking-tight text-[#0F0F10] mb-6">
-                            Certificates &<br /> Archive.
-                        </h1>
-                        <p className="text-gray-500 font-light text-lg max-w-md leading-relaxed">
-                            A curated selection of our global compliances, ensuring quality at every step of the chemical process.
-                        </p>
-                    </div>
+        {/* Right Grid Section - 70% */}
+        <section className="w-full lg:w-[70%] grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+          {CERTIFICATES.map((cert, index) => (
+            <CertificateCard 
+                key={cert.id} 
+                cert={cert} 
+                index={index} 
+                onHover={setHoveredCard}
+            />
+          ))}
+        </section>
+      </motion.div>
+    </main>
+  );
+}
 
-                    {/* The List */}
-                    <div className="space-y-4">
-                        {CERTIFICATES_DATA.map((cert, index) => (
-                            <div
-                                key={cert.id}
-                                onMouseEnter={() => setActiveIndex(index)}
-                                className={`group relative py-8 border-b cursor-pointer transition-all duration-300 ${index === activeIndex ? 'border-[#D32F2F]' : 'border-gray-100'
-                                    }`}
-                            >
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="flex items-baseline gap-6 md:gap-10 transition-transform duration-300 group-hover:translate-x-4">
-                                        <span className={`font-mono text-sm transition-colors duration-300 ${index === activeIndex ? 'text-[#D32F2F]' : 'text-gray-400'
-                                            }`}>
-                                            {cert.code}
-                                        </span>
-                                        <h3 className={`text-2xl md:text-3xl font-light tracking-tight transition-colors duration-300 ${index === activeIndex ? 'text-[#D32F2F]' : 'text-[#0F0F10]'
-                                            }`}>
-                                            {cert.name}
-                                        </h3>
-                                    </div>
+function CertificateCard({ cert, index, onHover }) {
+  const [isHovered, setIsHovered] = useState(false);
 
-                                    <div className={`text-[#D32F2F] text-2xl transition-all duration-300 transform ${index === activeIndex ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-                                        }`}>
-                                        <FiArrowRight />
-                                    </div>
-                                </div>
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.3 + index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+      className="relative flex flex-col z-10 group"
+      onMouseEnter={() => {
+          setIsHovered(true);
+          onHover(cert.id);
+      }}
+      onMouseLeave={() => {
+          setIsHovered(false);
+          onHover(null);
+      }}
+      style={{ perspective: "1500px" }}
+    >
+      {/* Index & Title Area */}
+      <div className="mb-6 flex flex-col">
+        <span 
+          className="text-6xl font-light text-transparent leading-none mb-2 tracking-tighter"
+          style={{ WebkitTextStroke: '1px rgba(255,255,255,0.2)' }}
+        >
+          {cert.code}
+        </span>
+        <h3 className="text-2xl font-bold tracking-tight text-white mb-1">{cert.name}</h3>
+        <p className="text-sm text-[#888888] font-light uppercase tracking-wider">{cert.desc}</p>
+      </div>
 
-                                {/* Mobile/Tablet Description (Hidden on Desk, shown on active) */}
-                                <div className={`mt-4 pl-10 md:pl-16 lg:hidden overflow-hidden transition-all duration-300 ${index === activeIndex ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
-                                    }`}>
-                                    <p className="text-sm text-gray-500 mb-2">{cert.desc}</p>
-                                    <button className="text-xs font-bold text-[#D32F2F] uppercase tracking-widest flex items-center gap-2">
-                                        Download PDF <FiDownload />
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+      {/* Image Container with 3D Tilt */}
+      <motion.div
+        className="relative w-full aspect-[210/297] bg-[#111111] overflow-hidden origin-center will-change-transform rounded-sm"
+        animate={{
+          rotateX: isHovered ? 2 : 0,
+          rotateY: isHovered ? (index === 0 ? 2 : -2) : 0,
+          boxShadow: isHovered 
+            ? "0 30px 50px -15px rgba(0,0,0,1), 0 0 30px rgba(195,33,39,0.15)" 
+            : "0 10px 30px -10px rgba(0,0,0,0.8), 0 0 0 rgba(195,33,39,0)",
+        }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Subtle premium border / wrapper */}
+        <div className="absolute inset-0 border border-white/10 z-20 pointer-events-none transition-colors duration-500 group-hover:border-white/20" />
 
-                    {/* Footer Info */}
-                    <div className="mt-24 pt-10 border-t border-gray-100 lg:hidden">
-                        <p className="text-gray-400 text-sm">
-                            © Aerosem Kimya. All rights reserved.
-                        </p>
-                    </div>
-
-                </div>
-
-                {/* RIGHT COLUMN: Sticky Image Preview (Desktop Only) */}
-                <div className="hidden lg:block w-1/2 sticky top-28 h-[calc(100vh-7rem)] bg-gray-50 border-l border-gray-100 self-start">
-                    <div className="relative w-full h-full flex items-center justify-center p-20 overflow-hidden">
-
-                        {/* Dynamic Background Number */}
-                        <div className="absolute right-0 bottom-0 text-[20rem] font-bold text-gray-100 leading-none select-none -z-0">
-                            {CERTIFICATES_DATA[activeIndex].code}
-                        </div>
-
-                        {/* Image Transition Container */}
-                        <div className="relative w-full aspect-[3/4] max-w-md shadow-2xl z-10 bg-white">
-                            {CERTIFICATES_DATA.map((cert, index) => (
-                                <div
-                                    key={cert.id}
-                                    className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out bg-gray-200 ${index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                                        }`}
-                                >
-                                    <Image src={cert.img} alt={cert.name} fill className="object-cover" />
-
-                                    {/* Overlay Details */}
-                                    <div className="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-sm p-8 border-t border-gray-100">
-                                        <h4 className="text-xl font-bold text-[#0F0F10] mb-1">{cert.name}</h4>
-                                        <p className="text-sm text-gray-500 mb-4">{cert.desc}</p>
-                                        <button className="w-full bg-[#D32F2F] text-white py-3 px-6 rounded-none uppercase tracking-widest text-xs font-bold hover:bg-black transition-colors duration-300 flex items-center justify-center gap-2">
-                                            Download Document <FiDownload />
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    );
+        <motion.div
+          animate={{ scale: isHovered ? 1.05 : 1.0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full h-full relative z-10 will-change-transform"
+        >
+          <NextImage
+            src={cert.img}
+            alt={`Aerosem Kimya - Certificate: ${cert.name}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 35vw"
+            quality={100}
+            className="object-cover"
+            style={{ 
+              filter: "none",
+              WebkitFontSmoothing: "antialiased",
+              imageRendering: "high-quality"
+            }}
+          />
+        </motion.div>
+        
+        {/* Outer Glow Effect on Image edges */}
+        <div className="absolute inset-0 z-30 shadow-[inset_0_0_20px_rgba(0,0,0,0.6)] pointer-events-none" />
+      </motion.div>
+    </motion.article>
+  );
 }

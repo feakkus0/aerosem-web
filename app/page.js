@@ -1,24 +1,15 @@
-import Hero from "@/components/sections/Hero";
-import TrustedBy from "@/components/sections/TrustedBy";
-
-import WhyChoose from "@/components/sections/WhyChoose";
-import ProductSpotlight from "@/components/sections/ProductSpotlight";
-import { Reveal } from "@/components/ui/Reveal";
+import HeroHome from "@/components/sections/home/HeroHome";
+import VisionHome from "@/components/sections/home/VisionHome";
+import ShowcaseHome from "@/components/sections/home/ShowcaseHome";
+import CtaHome from "@/components/sections/home/CtaHome";
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <Reveal width="100%">
-        <TrustedBy />
-      </Reveal>
-
-      <Reveal width="100%">
-        <WhyChoose />
-      </Reveal>
-      <Reveal width="100%">
-        <ProductSpotlight />
-      </Reveal>
-    </>
+    <main className="bg-[#FAFAF7] min-h-screen">
+      <HeroHome />
+      <VisionHome />
+      <ShowcaseHome />
+      <CtaHome />
+    </main>
   );
 }

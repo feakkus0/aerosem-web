@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import NextImage from "next/image";
 
 const Footer = () => {
     return (
@@ -20,7 +20,7 @@ const Footer = () => {
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
                         <div className="md:col-span-2">
                             <div className="relative h-16 w-64">
-                                <Image
+                                <NextImage
                                     src="/logoa1.webp"
                                     alt="Aerosem Kimya Logo"
                                     fill

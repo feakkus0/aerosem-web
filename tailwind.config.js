@@ -4,12 +4,18 @@ module.exports = {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
     ],
-    darkMode: "class", // Added based on HTML snippet showing dark mode support
+    darkMode: "class",
     theme: {
         extend: {
             colors: {
                 "primary": "#C61F25",
-                "background-light": "#FFFFFF",
+                // New warm palette
+                "ivory": "#FAFAF7",
+                "sand": "#F0EFEA",
+                "espresso": "#2A2826",
+                "warm-gray": "#6B6B6B",
+                // Legacy light/dark
+                "background-light": "#FAFAF7",
                 "background-dark": "#0A0A0A",
                 "text-light": "#1A1A1A",
                 "text-dark": "#E5E5E5",
@@ -17,9 +23,7 @@ module.exports = {
                 "card-dark": "#141414",
                 "border-light": "#E5E5E5",
                 "border-dark": "#2A2A2A",
-                // Keeping original brand colors as aliases or for reference if needed, 
-                // but user asked for EXACT settings, so primarily using the above.
-                // Adding back the specific ones just in case they were used elsewhere or preferred.
+                // Brand
                 'aerosem-red': '#C61F25',
                 'space-black': '#0F0F10',
                 'carbon-grey': '#1A1A1A',

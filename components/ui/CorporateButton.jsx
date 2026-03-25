@@ -19,8 +19,9 @@ const CorporateButton = ({
 
     // Variants Configuration
     const variants = {
-        solid: "bg-[#C61F25] text-white hover:bg-white hover:text-[#C61F25] border border-transparent",
-        outline: "bg-transparent border border-white/30 text-white hover:bg-white hover:text-[#C61F25] backdrop-blur-sm"
+        solid: "bg-[#C61F25] text-white hover:bg-[#1A1A1A] hover:text-white border border-transparent",
+        outline: "bg-transparent border border-white/30 text-white hover:bg-white hover:text-[#C61F25] backdrop-blur-sm",
+        light: "bg-transparent border border-[#1A1A1A]/20 text-[#1A1A1A] hover:bg-[#C61F25] hover:text-white hover:border-[#C61F25]",
     };
 
     return (

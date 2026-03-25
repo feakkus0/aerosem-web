@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useParams, notFound } from "next/navigation";
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
@@ -72,9 +72,9 @@ export default function ProductDetailPage() {
                     {/* Ürün Görseli */}
                     <div className="w-full h-full relative flex items-center justify-center p-8 md:p-12">
                         <div className="relative w-full h-full drop-shadow-2xl">
-                            <Image
+                            <NextImage
                                 src={product.image}
-                                alt={product.name}
+                                alt={`Aerosem Kimya - ${product.name}`}
                                 fill
                                 className="object-contain"
                                 priority
@@ -88,7 +88,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* --- SAĞ TARAF (İÇERİK ALANI) --- */}
-            <div className="w-full md:w-1/2 min-h-screen bg-white px-6 pb-12 pt-12 md:px-20 md:pb-20 md:pt-32 flex flex-col">
+            <article className="w-full md:w-1/2 min-h-screen bg-white px-6 pb-12 pt-12 md:px-20 md:pb-20 md:pt-32 flex flex-col">
 
                 {/* Masaüstü Geri Butonu */}
                 <div className="hidden md:block mb-8">
@@ -128,12 +128,12 @@ export default function ProductDetailPage() {
                 </Reveal>
 
                 {/* Özellik Kutucukları */}
-                <div className="mb-12 grid grid-cols-2 gap-4 max-w-xl">
+                <section className="mb-12 grid grid-cols-2 gap-4 max-w-xl">
                     <Reveal width="100%" delay={0.3}>
                         <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
                             <Shield className={`w-6 h-6 ${theme.iconColor}`} />
                             <div>
-                                <h4 className="font-bold text-[#0F0F10] text-sm">Industrial Grade</h4>
+                                <h2 className="font-bold text-[#0F0F10] text-sm">Industrial Grade</h2>
                                 <p className="text-xs text-gray-500">Maximum durability</p>
                             </div>
                         </div>
@@ -143,7 +143,7 @@ export default function ProductDetailPage() {
                         <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
                             <Zap className={`w-6 h-6 ${theme.iconColor}`} />
                             <div>
-                                <h4 className="font-bold text-[#0F0F10] text-sm">High Efficiency</h4>
+                                <h2 className="font-bold text-[#0F0F10] text-sm">High Efficiency</h2>
                                 <p className="text-xs text-gray-500">Fast acting formula</p>
                             </div>
                         </div>
@@ -153,7 +153,7 @@ export default function ProductDetailPage() {
                         <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
                             <Package className={`w-6 h-6 ${theme.iconColor}`} />
                             <div>
-                                <h4 className="font-bold text-[#0F0F10] text-sm">Original Product</h4>
+                                <h2 className="font-bold text-[#0F0F10] text-sm">Original Product</h2>
                                 <p className="text-xs text-gray-500">Aerosem guarantee</p>
                             </div>
                         </div>
@@ -163,12 +163,12 @@ export default function ProductDetailPage() {
                         <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col gap-2 hover:border-gray-200 transition-colors">
                             <FileText className={`w-6 h-6 ${theme.iconColor}`} />
                             <div>
-                                <h4 className="font-bold text-[#0F0F10] text-sm">TDS Available</h4>
+                                <h2 className="font-bold text-[#0F0F10] text-sm">TDS Available</h2>
                                 <p className="text-xs text-gray-500">Request document</p>
                             </div>
                         </div>
                     </Reveal>
-                </div>
+                </section>
 
                 {/* Alt Butonlar */}
                 <Reveal width="100%" delay={0.5}>
@@ -187,7 +187,7 @@ export default function ProductDetailPage() {
                     </div>
                 </Reveal>
 
-            </div>
+            </article>
         </div>
     );
 }

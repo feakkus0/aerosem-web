@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FiEye, FiDownload } from 'react-icons/fi';
-import Image from 'next/image';
+import NextImage from "next/image";
 
 export default function CertificateCard({ title, code, image, onView, onDownload }) {
     return (
@@ -13,7 +13,7 @@ export default function CertificateCard({ title, code, image, onView, onDownload
                 {/* Placeholder Image Logic - In a real app, use the actual image prop */}
                 <div className="absolute inset-0 flex items-center justify-center text-gray-300">
                     {image ? (
-                        <Image
+                        <NextImage
                             src={image}
                             alt={title}
                             fill
